@@ -55,7 +55,7 @@ class asignacionController extends Controller
 	}
 	public function store(Request $request)
 	{
-		$this->validate($request, rdbtAsignacion::$rules);
+		$this->validate($request, rdbtAsignacion::$rules, rdbtAsignacion::$messages);
 
 		$incident = new rdbtAsignacion();
 		$incident->equipo_marca_id=$request->input('equipo');

@@ -36,13 +36,10 @@
         </span>
         @endif   
       
-      <input type="submit" class="fadeIn fourth" value="Ingresar">
+      <input type="submit" value="Ingresar">
     </form>
 
     <!-- Remind Passowrd -->
-    <div id="formFooter">
-      <a class="underlineHover" href="#">Forgot Password?</a>
-    </div>
-
+    
   </div>
 </div>

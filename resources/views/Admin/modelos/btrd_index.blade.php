@@ -18,7 +18,7 @@ href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 
 <div class="container" style="padding-left: 90px; padding-right: 90px;">
   <div class="panel panel-default">
-    <div class="panel-heading">Dashboard</div>
+    <div class="panel-heading" style="background: -webkit-linear-gradient(left, #3366cc , white); color: #ffffff">Dashboard</div>
 
     <div class="panel-body">
      <!-- VALIDACIONES Y MENSAJES DE ERROR-->
@@ -65,8 +65,8 @@ href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
       <button class="btn btn-primary">Registrar modelo</button>
     </div>    
   </form>
-  <table id="Usertable" class="display table table-bordered">
-   <thead class="thead-dark">
+  <table id="Usertable" class="display table table-bordered" >
+   <thead  style="background: -webkit-linear-gradient(left, green , white); color: #ffffff">
      <tr>
       <th>Nombre</th>
       <th>Descripcion</th>

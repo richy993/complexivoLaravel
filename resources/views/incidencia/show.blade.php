@@ -11,7 +11,7 @@ href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 @section('content')
 <div class="container" style="padding-left: 90px; padding-right: 90px;">
     <div class="panel panel-primary">
-        <div class="panel-heading">Dashboard</div>
+        <div class="panel-heading" style="background: -webkit-linear-gradient(left, #3366cc , white); color: #ffffff">Dashboard</div>
 
         <div class="panel-body">
             @if (session('notification'))
@@ -20,8 +20,8 @@ href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
             </div>
             @endif
 
-            <table class="table table-bordered">
-                <thead>
+            <table class="table table-bordered" >
+                <thead style="background: -webkit-linear-gradient(left, green , white); color: #ffffff">
                     <tr>
                         <th>Código</th>
                         <th>Cliente</th>
@@ -81,13 +81,17 @@ href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
         @endif
 
     -->
-     @if($incident->support_id!=null && auth()->user()->id == $incident->support_id )
-   
+     @if($incident->support_id!=null && auth()->user()->id == $incident->support_id  )
+   @if($incident->active==1)
 
    <button type="button" class="btn btn-sm btn-warning" data-toggle='modal' data-target="#myModal1{{$incident->id}}" title="Editar"> Ingresar informe </button>  
 
   <a href="{{route('asignacion.solve.view',$incident->id)}}" class="btn btn-info btn-sm" id="incident_btn_solve">
        Marcar como resuelto
+   </a>
+   @endif
+    <a href="/AsSoporte" class="btn btn-secondary">Regresar</a>
+       
    </a>
 
    <div class="modal fade" tabindex="-1" role="dialog" id="myModal1{{$incident->id}}">
@@ -95,7 +99,7 @@ href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title">Editar marca</h4>
+          <h4 class="modal-title">Ingresar Informe</h4>
       </div>
       <div class="modal-body">
           @if (session('notification'))

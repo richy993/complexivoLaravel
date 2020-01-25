@@ -20,7 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('rdbtapellido');
             $table->string('rdbttelefono');
             $table->string('rdbtdirreccion');
-            $table->smallInteger('rdbtrol');// 0:Admin| 1: support| 2: clients
+            $table->string('rdbtrol');// 0:Admin| 1: support| 2: clients
             $table->string('email')->unique();
             $table->string('password');
             //$table->text('session_id');

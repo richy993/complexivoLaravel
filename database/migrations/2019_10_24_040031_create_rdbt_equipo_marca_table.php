@@ -22,6 +22,7 @@ class CreateRdbtEquipoMarcaTable extends Migration
             $table->integer('rdbt_modelo_id')->unsigned();
             $table->foreign('rdbt_modelo_id')->references('id')->on('rdbt_modelos');
             $table->string('rdbtserie');
+            $table->boolean('active')->default(1);
             $table->integer('client_id')->unsigned();
             $table->foreign('client_id')->references('id')->on('users');
             $table->integer('support_id')->unsigned()->nullable();

@@ -7,17 +7,17 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
 <div class="panel panel-primary">
-	<div class="panel-heading">Dashboard</div>
+	<div class="panel-heading" style="background:-webkit-linear-gradient(left,#3366cc , white); color: #ffffff">Dashboard</div>
 
 
 	<div class="panel-body">
 		<div class="panel panel-primary">
-			<div class="panel-heading">
+			<div class="panel-heading" style="background: -webkit-linear-gradient(left, green , white); color: #ffffff">
 				<h3 class="panel-title">Incidencias resueltas</h3>
 			</div>
 			<div class="panel-body">
 				<table class="table table-bordered">
-					<thead>
+					<thead >
 						<tr>
 							<th>Código</th>
 							<th>Cliente</th>
@@ -48,7 +48,7 @@
 				</div>
 			</div>
 			<div class="panel panel-primary">
-				<div class="panel-heading">
+				<div class="panel-heading" style="background: -webkit-linear-gradient(left, green , white); color: #ffffff">
 					<h3 class="panel-title">Incidencias asignadas a Soporte</h3>
 				</div>
 				<div class="panel-body">
@@ -89,7 +89,7 @@
 				<form action="" method="POST">
 					{{csrf_field()}}
 					<div class="panel panel-primary">
-						<div class="panel-heading">
+						<div class="panel-heading" style="background: -webkit-linear-gradient(left, green , white); color: #ffffff">
 							<h3 class="panel-title">Incidencias sin asignar</h3>
 						</div>
 
@@ -124,7 +124,7 @@
 
 										<td>
 											<a href="/incidencia/{{$incident->id}}/editar" class="btn btn-primary btn-sm" id="incident_btn_apply">
-												Atender
+												Asignar
 											</a>
 
 

@@ -7,24 +7,26 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
 <div class="panel panel-primary">
-	<div class="panel-heading">Dashboard</div>
+	<div class="panel-heading" style="background: -webkit-linear-gradient(left, #3366cc , white); color: #ffffff">Dashboard</div>
 
 
 	<div class="panel-body">
 
 		<div class="panel panel-primary">
-			<div class="panel-heading">
+			<div class="panel-heading" style="background: -webkit-linear-gradient(left, green , white); color: #ffffff">
 				<h3 class="panel-title">Incidencias asignadas a mí</h3>
 			</div>
 			<div class="panel-body">
 				<table class="table table-bordered">
-					<thead>
+					<thead >
 						<tr>
 							<th>Código</th>
 							<th>Severidad</th>
 							<th>Estado</th>
 							<th>Fecha creación</th>
 							<th>Descripcion</th>
+
+							<th>reporte</th>
 						</tr>
 					</thead>
 					<tbody id="dashboard_my_incidents">
@@ -41,7 +43,12 @@
 								<td>{{ $incident->state }}</td>
 								<td>{{ $incident->created_at }}</td>
 								<td>{{ $incident->title_short }}</td>
-								<td>	<a href="{{route('clientes.report.view',$incident->id)}}"> reportar</a></td>>
+								@if($incident->active==0)
+								<td>	<a href="{{route('clientes.report.view',$incident->id)}}" title="reporte" target="_blank" ><b>PDF</b>
+								<span class="glyphicon glyphicon-list-alt"></span></a></td>>
+								@else
+								<td>incidencia no resuelta</td>
+								@endif
 							</tr>
 							@endforeach
 
@@ -51,7 +58,7 @@
 			</div>
 
 			<div class="panel panel-primary">
-				<div class="panel-heading">
+				<div class="panel-heading" style="background: -webkit-linear-gradient(left, green , white); color: #ffffff" >
 					<h3 class="panel-title">Incidencias sin asignar</h3>
 				</div>
 				<div class="panel-body">

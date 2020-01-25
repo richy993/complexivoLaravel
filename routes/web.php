@@ -20,6 +20,12 @@ Route::get('/', function () {
 
 Auth::routes();
 
+//graficas
+Route::get('/graficas','rdbtChartController@index');
+Route::post('/graficas','rdbtChartController@store');
+
+
+
 Route::get('/home', 'HomeController@index')->name('home');
 
 //incidencia
@@ -36,6 +42,7 @@ Route::get('/Asignacion','asignacionController@index');
 Route::post('/Asignacion','asignacionController@store');
 use App\rdbtAsignacion;
 use App\rdbtCorrectivo;
+use App\rdbtEquipoMarca;
 Route::get('/ver/{id}/incidencia',function($id){
 
 	$user=auth()->user();
@@ -64,6 +71,16 @@ Route::get('/incidencia/{id}/result',function($id){
 })->middleware('support')->name('asignacion.solve.view');
 
 
+Route::get('/prevencion/{id}/result',function($id){
+	
+	$incident=rdbtEquipoMarca::findOrFail($id);
+
+	$incident->active = 0 ;
+
+	$incident->save();
+
+	return back();
+})->middleware('support')->name('preventivo.solve.view');
 
 Route::get('/incidencia/{id}/abrir','asignacionController@open');
 
@@ -82,6 +99,7 @@ Route::get('/ver/{id}','prevencionController@show',function(){
 Route::get('/preventivo/soporte','prevencionController@indexSoporte',function(){
 
 })->middleware('support');
+
 Route::get('/ver/{id}/view','prevencionController@showSoporte',function(){
 	
 })->middleware('support');
@@ -106,8 +124,10 @@ Route::get('/ver/{id}/Admin','prevencionController@showAdmin',function(){
 
 Route::post('/mensajes','MessageController@store');
 
-Route::get('/reporte/{id}/client','AsignacionController@report')->name('clientes.report.view');;
+Route::get('/reporte/{id}/client','AsignacionController@report')->name('clientes.report.view');
 
+Route::get('/reporte/{id}/prevencion','prevencionController@report')->name('prevencion.report.view');
+Route::get('/reporte/{id}/prevencionCliente','prevencionController@reportCliente')->name('prevencion.reportCliente.view');
 //administrador
 Route::group(['middleware'=>'admin','namespace'=>'Admin'],function(){
 
@@ -170,3 +190,6 @@ Route::get('/reporte','AsignacionAdminController@report');
 	//asignacion
 
 });
+
+
+

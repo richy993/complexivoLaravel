@@ -11,7 +11,7 @@ href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 <div class="container" style="padding-left: 90px; padding-right: 90px;">
 
 <div class="panel panel-info">
-    <div class="panel-heading">
+    <div class="panel-heading" style="background: -webkit-linear-gradient(left, green , white); color: #ffffff">
         <h3 class="panel-title">Discusión</h3>
     </div>
     <div class="panel-body">

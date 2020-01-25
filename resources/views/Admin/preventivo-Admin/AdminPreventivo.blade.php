@@ -6,19 +6,19 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 <div class="container" style="padding-left: 40px; padding-right: 40px;">
 	<div class="panel panel-primary">
-		<div class="panel-heading">Dashboard</div>
+		<div class="panel-heading" style="background: -webkit-linear-gradient(left, #3366cc , white); color: #ffffff">Dashboard</div>
 
 
 		<div class="panel-body">
 
 			<div class="panel panel-primary">
-				<div class="panel-heading">
-					<h3 class="panel-title">Incidencias asignadas a soporte</h3>
+				<div class="panel-heading" style="background: -webkit-linear-gradient(left, green , white); color: #ffffff">
+					<h3 class="panel-title" >Mantenimientos asignadas a soporte</h3>
 				</div>
 				<div class="panel-body">
-					<table class="table table-bordered">
-						<thead>
-							<tr>
+					<table class="table table-bordered" >
+						<thead >
+							<tr bgcolor="">
 								<th>Código</th>
 								<th>usuario</th>
 								<th>equipo</th>
@@ -58,14 +58,14 @@
 			</div>
 
 			<div class="panel panel-primary">
-				<div class="panel-heading">
-					<h3 class="panel-title">Incidencias sin asignar</h3>
+				<div class="panel-heading" style="background: -webkit-linear-gradient(left, green , white); color: #ffffff">
+					<h3 class="panel-title">Mantenimientos sin asignar</h3>
 				</div>
 				<div class="panel-body">
 					<table class="table table-bordered">
 						<thead>
 							<tr>
-								<tr>
+								<tr >
 									<th>Código</th>
 									<th>usuario</th>
 									<th>equipo</th>
@@ -75,6 +75,7 @@
 									<th>Fecha Asignacion</th>
 									<th>Fecha Mantenimiento</th>
 									<th>Responsable</th>
+								
 								</tr>
 							</thead>
 							<tbody id="dashboard_my_incidents">
@@ -96,9 +97,9 @@
 									<td>{{$incident->rdbtFechaPrevencion}}</td>
 									<td>
 										<button type="button" class="btn btn-sm btn-success" data-toggle='modal' data-target="#myModal{{$incident->id}}" title="Atender">
-										ATENDER
+											ASIGNAR
 										</button>
-										 
+
 										<div class="modal fade" tabindex="-1" role="dialog" id="myModal{{$incident->id}}">
 											<div class="modal-dialog" role="document">
 												<div class="modal-content">

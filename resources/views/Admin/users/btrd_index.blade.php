@@ -14,7 +14,7 @@ href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css">
 <div class="container" >
 
   <div class="panel panel-default" >
-    <div class="panel-heading">Dashboard</div>
+    <div class="panel-heading" style="background: -webkit-linear-gradient(left, #3366cc , white); color: #ffffff">Dashboard</div>
 
     <div class="panel-body">
      <!-- VALIDACIONES Y MENSAJES DE ERROR-->
@@ -81,8 +81,8 @@ href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css">
              </div>
              
            </form>
-            <table id="Usertable" class="display table table-bordered" >
-       <thead  >
+            <table id="Usertable" class="display table table-bordered"  >
+       <thead  style="background: -webkit-linear-gradient(left, green , white); color: #ffffff">
          <tr>
           <th>Email</th>
           <th>Nombre</th>

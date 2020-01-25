@@ -47,7 +47,23 @@ class asignacionController extends Controller
 	}
 	public function store(Request $request)
 	{
-		$this->validate($request, rdbtAsignacion::$rules);
+		$rules = [
+    'category_id' => 'sometimes|exists:categories,id',
+    'severity' => 'required|in:M,N,A',
+    'title' => 'required|min:5',
+    'description' => 'required|min:15',
+    
+];
+
+$messages = [
+    'category_id.exists' => 'La categoría seleccionada no existe en nuestra base de datos.',
+    'title.required' => 'Es necesario ingresar un título para la incidencia.',
+    'title.min' => 'El título debe presentar al menos 5 caracteres.',
+    'description.required' => 'Es necesario ingresar una descripción para la incidencia.',
+    'description.min' => 'La descripción debe presentar al menos 15 caracteres.'
+];
+
+		$this->validate($request,$rules,$messages);
 
 		$incident = new rdbtAsignacion();
 		$incident->equipo_marca_id=$request->input('equipo');
@@ -91,7 +107,23 @@ class asignacionController extends Controller
 	}
 	public function update(Request $request,$id)
 	{
-		$this->validate($request, rdbtAsignacion::$rules);
+		$rules = [
+    'category_id' => 'sometimes|exists:categories,id',
+    'severity' => 'required|in:M,N,A',
+    'title' => 'required|min:5',
+    'description' => 'required|min:15',
+    
+];
+
+$messages = [
+    'category_id.exists' => 'La categoría seleccionada no existe en nuestra base de datos.',
+    'title.required' => 'Es necesario ingresar un título para la incidencia.',
+    'title.min' => 'El título debe presentar al menos 5 caracteres.',
+    'description.required' => 'Es necesario ingresar una descripción para la incidencia.',
+    'description.min' => 'La descripción debe presentar al menos 15 caracteres.'
+];
+
+		$this->validate($request,$rules,$messages);
 
 		$incident =rdbtAsignacion::findOrFail($id);
 		$incident->equipo_marca_id=$request->input('equipo');
@@ -109,9 +141,10 @@ class asignacionController extends Controller
 		$user=auth()->user();
 		$inc=rdbtAsignacion::findOrFail($id);
 
-		if($user->id==$inc->client_id || $user->id==$inc->support_id ){
-				$informe=rdbtCorrectivo::findOrFail($id);
+		if($user->id==$inc->client_id || $user->id==$inc->support_id){
+			
 		$incident=rdbtAsignacion::findOrFail($id);//mensajes chat
+		$informe=rdbtCorrectivo::where('rdbt_asignacion_id',$incident->id)->first();
 		$messages=$incident->messages;
 			$valFecha=Carbon::now();
 		$view=view('reporte.reporteIncidenciaSoporte')->with(compact('incident','messages','informe','valFecha'));

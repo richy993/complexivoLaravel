@@ -39,7 +39,7 @@
 						<div class="panel-body">
 							<table class="table table-bordered">
 								<thead>
-									<tr>
+									<tr bgcolor="#CCCCFF">
 										<th>Código</th>
 										<th>Cliente</th>
 										<th>soporte</th>
@@ -52,7 +52,7 @@
 								<tbody id="dashboard_my_incidents">
 									<!-- severity_full se encuentrs en el modelo y permite obtener el nombre completo de la severidad de la asignacion-->
 									@foreach ($my_results as $incident)
-									<tr>
+									<tr >
 										<td>{{ $incident->id }}</td>
 										<td>{{$incident->client->rdbtnombre.' '.$incident->client->rdbtapellido}}</td>
 										<td>{{$incident->support->rdbtnombre.' '.$incident->support->rdbtapellido}}
@@ -77,7 +77,7 @@
 						<div class="panel-body">
 							<table class="table table-bordered">
 								<thead>
-									<tr>
+									<tr bgcolor="#CCCCFF">
 										<th>Código</th>
 										<th>Cliente</th>
 										<th>soporte</th>
@@ -116,7 +116,7 @@
 							<div class="panel-body">
 								<table class="table table-bordered">
 									<thead>
-										<tr>
+										<tr bgcolor="#CCCCFF">
 											<th>Código</th>	
 											<th>Cliente</th>
 											<th>Equipo</th>

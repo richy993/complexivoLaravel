@@ -47,10 +47,16 @@ href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
         </style>
     </head>
     <body>
-        <div class="container">
-            <div class="content">
-                <div class="title"><center>Pagina no encontrada</center></div>
-            </div>
+         <div class="container-fluid">
+
+          <!-- 404 Error Text -->
+          <div class="text-center">
+            <div class="error mx-auto" data-text="404" >404</div>
+            <p class="lead text-gray-800 mb-5">Pagina no encontrada</p>
+            <p class="text-gray-500 mb-0">Sera redireccionado a homa</p>
+            <a href="/home">&larr; Regresar a la pagina principal</a>
+          </div>
+
         </div>
     </body>
 @endsection

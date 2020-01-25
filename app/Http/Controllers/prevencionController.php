@@ -7,7 +7,7 @@ use App\rdbtEquipoMarca;
 use App\User;
 use App\rdbtPreventivo;
 use App\rdbtAsignacion;
-
+use DB;
 
 use Carbon\Carbon; 
 
@@ -31,6 +31,8 @@ class prevencionController extends Controller
 		$user=auth()->user();
 
 		$my_incidents=rdbtEquipoMarca::where('support_id',$user->id)->get();
+		$join=DB::table('rdbt_equipo_marca')->join('rdbt_Preventivos','equipo_marca_id','=','rdbt_Preventivos.equipo_marca_id')->where('rdbt_equipo_marca.id','=','rdbt_Preventivos.equipo_marca_id')->get();
+		
 		return view('Admin.preventivo-Soporte.SoportePreventivo')->with(compact('my_incidents',));	
 	}
 
@@ -38,7 +40,7 @@ class prevencionController extends Controller
 
 		$user=auth()->user(); 
 		$my_incidents=rdbtEquipoMarca::where('support_id','!=',null)->get();
-		$pending_incidents=rdbtEquipoMarca::where('support_id',null)->get();
+		$pending_incidents=rdbtEquipoMarca::where('support_id',null)->orderBy('rdbtFechaPrevencion')->get();
 
 		$soporte=User::where('rdbtrol',1)->get();
 		return view('Admin.preventivo-Admin.AdminPreventivo')->with(compact('my_incidents', 'pending_incidents','soporte'));	
@@ -48,13 +50,12 @@ class prevencionController extends Controller
 		$user=auth()->user();
 		$inc=rdbtEquipoMarca::findOrFail($id);
 		if($user->id==$inc->client_id){
+
 		$incident=rdbtEquipoMarca::findOrFail($id);//obtener el numero de dias que falta para el mantenimiento
 		$valFecha=$incident->created_at;
 		$valFecha2=$incident->rdbtFechaPrevencion;
 		$hi=Carbon::parse($valFecha);
 		$hi2=Carbon::parse($valFecha2);
-
-
 		$hello=$hi2->diffInDays($hi);  
 		                 //mensajes chat
 		$messages=$incident->messages;
@@ -81,7 +82,7 @@ public function showSoporte($id){
 
 		//mensajes chat
 		$messages=$incident->messages;
-		return view('Admin.preventivo.show')->with(compact('incident','messages','hello','hi','hi2'));
+		return view('Admin.preventivo.show')->with(compact('incident','messages','hello','hi','hi2',));
 	}
 
 
@@ -119,10 +120,6 @@ public function create(Request $request)
 	];
 
 	$this->validate($request, $rules, $messages);
-
-
-	
-
 	$message = new rdbtPreventivo(); 
 	$message->equipo_marca_id = $request->input('equipo_marca_id');
 	$message->rdbtDetalle = $request->input('rdbtDetalle');
@@ -131,4 +128,41 @@ public function create(Request $request)
 	$message->save();
 	return back()->with('notification', 'Su informe se ha enviado con éxito.');
 }
+
+public function report($id){
+	$user=auth()->user();
+		$inc=rdbtEquipoMarca::findOrFail($id);
+
+		if( $user->id==$inc->support_id && $inc->support_id!=null){
+	$incident=rdbtEquipoMarca::findOrFail($id);
+	$valFecha=Carbon::now();
+
+	$informe=rdbtPreventivo::where('equipo_marca_id',$incident->id)->first();
+
+	$view= view("reporte.reportePreventivoSoporte")->with(compact('incident','valFecha','informe'));
+	$pdf=\App::make('dompdf.wrapper');
+	$pdf->loadhtml($view);
+	return $pdf->stream();
+}
+	return redirect("/home");
+
+}
+public function reportCliente($id){
+	$user=auth()->user();
+		$inc=rdbtEquipoMarca::findOrFail($id);
+
+		if($user->id==$inc->client_id && $inc->support_id!=null){
+	$incident=rdbtEquipoMarca::findOrFail($id);
+	$valFecha=Carbon::now();
+	$informe=rdbtPreventivo::where('equipo_marca_id',$incident->id)->first();
+
+	$view= view("reporte.reportePreventivoSoporte")->with(compact('incident','valFecha','informe'));
+	$pdf=\App::make('dompdf.wrapper');
+	$pdf->loadhtml($view);
+	return $pdf->stream();
+}
+	return redirect("/home");
+
+}
+
 }

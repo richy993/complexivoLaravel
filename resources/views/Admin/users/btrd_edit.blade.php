@@ -14,7 +14,7 @@ href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css">
 
 <div class="container" style="padding-left: 90px; padding-right: 90px;">
   <div class="panel panel-default">
-    <div class="panel-heading">Dashboard</div>
+    <div class="panel-heading" style="background: -webkit-linear-gradient(left, #3366cc , white); color: #ffffff">Dashboard</div>
 
     <div class="panel-body">
            <!-- VALIDACIONES Y MENSAJES DE ERROR-->

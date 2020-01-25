@@ -61,14 +61,14 @@ class UserController extends Controller
 		];
 		$this->validate($request,$rules,$messages);
 		$user=new User();
-		$user->rdbtnombre=str_replace(' ', '', $request->input('rdbtnombre'));
-		$user->rdbtapellido=str_replace(' ', '', $request->input('rdbtapellido'));
-		$user->rdbtcedula=str_replace(' ', '', $request->input('rdbtcedula'));
-		$user->rdbttelefono=str_replace(' ', '', $request->input('rdbttelefono'));
-		$user->rdbtdirreccion=str_replace(' ', '', $request->input('rdbtdirreccion'));
+		$user->rdbtnombre=$request->input('rdbtnombre');
+		$user->rdbtapellido=$request->input('rdbtapellido');
+		$user->rdbtcedula=$request->input('rdbtcedula');
+		$user->rdbttelefono=$request->input('rdbttelefono');
+		$user->rdbtdirreccion=$request->input('rdbtdirreccion');
 		$user->rdbtrol=$request->input('rdbtrol');
-		$user->email=str_replace(' ', '', $request->input('email'));
-		$user->password=str_replace(' ', '', bcrypt($request->input('password')));
+		$user->email=$request->input('email');
+		$user->password=bcrypt($request->input('password'));
 
 		
 		$user->save();
@@ -144,7 +144,7 @@ class UserController extends Controller
 	public function delete($id)
 	{
 		$user=User::find($id);
-		$user->delete();
+		$user->destroy($user->id);
 
 		return back()->with('notification','el usuario se ah eliminado correctamente');
 	}

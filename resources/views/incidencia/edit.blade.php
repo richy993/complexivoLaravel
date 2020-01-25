@@ -11,7 +11,7 @@ href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 @section('content')
 <div class="container" style="padding-left: 90px; padding-right: 90px;">
     <div class="panel panel-primary">
-        <div class="panel-heading">Dashboard</div>
+        <div class="panel-heading" style="background: -webkit-linear-gradient(left, #3366cc , white); color: #ffffff">Dashboard</div>
 
         <div class="panel-body">
             @if (count($errors) > 0)

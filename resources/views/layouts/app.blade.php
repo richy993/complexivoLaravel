@@ -58,7 +58,7 @@
       <li class="nav-item active">
         <a class="nav-link" href="{{url('home')}}">
           <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>ITSCO</span></a>
+          <span>itsco </span></a>
         </li>
 
         <!-- Divider -->
@@ -105,39 +105,6 @@
               <a class="collapse-item" href="{{url('Equipo-marca')}}">Asignacion de Equipo</a>
               <a class="collapse-item" href="{{url('AsAdministrador')}}">Incidencias</a>
               <a class="collapse-item" href="{{url('preventivo')}}">Preventivo</a>
-              
-            </div>
-          </div>
-        </li>
-        <hr class="sidebar-divider">
-
-        <!-- Heading -->
-        <div class="sidebar-heading">
-          Report
-        </div>
-
-        <!-- Nav Item - Pages Collapse Menu -->
-        <li class="nav-item">
-          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
-            <i class="fas fa-fw fa-folder"></i>
-            <span>Reportes</span>
-          </a>
-          <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-              <h6 class="collapse-header">Reportes</h6>
-              <a class="collapse-item" onclick="enviar()" id="enviar">Incidencias</a>
-              
-              <a class="collapse-item" href="register.html">Register</a>
-              <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
-              <div class="collapse-divider"></div>
-              <h6 class="collapse-header">Other Pages:</h6>
-              <a class="collapse-item" href="404.html">404 Page</a>
-              <a class="collapse-item" href="blank.html">Blank Page</a>
-                      <script>
-                function enviar(){
-                  window.open('http://btrdcomplexivo:8080/reporte');
-                }
-              </script>
             </div>
           </div>
         </li>
@@ -184,21 +151,33 @@
 
         @endif
         <!-- Divider -->
-        
+       @if(auth()->user()->is_admin){
 
-        <!-- Nav Item - Charts -->
+        <hr class="sidebar-divider">
+
+        <!-- Heading -->
+        <div class="sidebar-heading">
+          Addons
+        </div>
+
+        <!-- Nav Item - Pages Collapse Menu -->
+
         <li class="nav-item">
-          <a class="nav-link" href="charts.html">
-            <i class="fas fa-fw fa-chart-area"></i>
-            <span>Charts</span></a>
-          </li>
-
-          <!-- Nav Item - Tables -->
-          <li class="nav-item">
-            <a class="nav-link" href="tables.html">
-              <i class="fas fa-fw fa-table"></i>
-              <span>Tables</span></a>
-            </li>
+          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
+            <i class="fas fa-fw fa-folder"></i>
+            <span>Reporte</span>
+          </a>
+          <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+              <h6 class="collapse-header">Reporte:</h6>
+              <a class="collapse-item" href="{{url('reporte')}}" target="_BLANK">Reporte Principal</a>
+    
+            </div>
+          </div>
+        </li>
+}@endif
+        <!-- Nav Item - Charts -->
+        
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
@@ -220,7 +199,7 @@
 
               <!-- Topbar -->
               <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-
+ <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTiB6UcPV58dBeVdkiN63ZboxZOBPxmVtf_AFhJ5Wc9N-4Z_UsC&s" width="150px;" />
                 <!-- Sidebar Toggle (Topbar) -->
                 <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                   <i class="fa fa-bars"></i>
@@ -246,22 +225,11 @@
                     </a>
                     <!-- Dropdown - User Information -->
                     <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                      <a class="dropdown-item" href="#">
-                        <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                        Profile
-                      </a>
-                      <a class="dropdown-item" href="#">
-                        <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                        Settings
-                      </a>
-                      <a class="dropdown-item" href="#">
-                        <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                        Activity Log
-                      </a>
+                     
                       <div class="dropdown-divider"></div>
                       <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                         <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                        Logout
+                        Salir
                       </a>
                     </div>
                   </li>
@@ -288,18 +256,18 @@
             <div class="modal-dialog" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                  <h5 class="modal-title" id="exampleModalLabel"</h5>
                   <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
+                    <span aria-hidden="true">SESION</span>
                   </button>
                 </div>
                 <div class="modal-body">desea cerrar sesion.</div>
                 <div class="modal-footer">
-                  <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                  <button class="btn btn-secondary" type="button" data-dismiss="modal">CancelAR</button>
                   <a href="{{ route('logout') }}"
                   onclick="event.preventDefault();
                   document.getElementById('logout-form').submit();">
-                  Logout
+                  SALIR
                 </a>
 
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

@@ -18,7 +18,7 @@ href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 
 <div class="container" style="padding-left: 90px; padding-right: 90px;">
   <div class="panel panel-default">
-    <div class="panel-heading">Dashboard</div>
+    <div class="panel-heading" style="background: -webkit-linear-gradient(left, #3366cc , white); color: #ffffff">Dashboard</div>
 
     <div class="panel-body">
      <!-- VALIDACIONES Y MENSAJES DE ERROR-->
@@ -99,6 +99,7 @@ href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
  <div class="row">
   <div class="col-md-5">
    <div class="form-group">
+     <label for="prevencion">Fecha de mantenimiento</label>
     <select name="prevencion" class="form-control" id="select-level">
       <option value="1">3 meses</option>
       <option value="2">6 meses</option>
@@ -118,7 +119,7 @@ href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 <br>
 <br>
 <table id="Usertable" class="display table table-bordered">
- <thead class="thead-dark">
+ <thead style="background: -webkit-linear-gradient(left, green , white); color: #ffffff">
    <tr>
     <th>Identificacion</th>
     <th>Nombre</th>
